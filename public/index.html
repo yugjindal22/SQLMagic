@@ -27,26 +27,36 @@
       </div>
       <div class="hero-image">
         <div class="floating-cards">
-          <div class="card">SELECT * FROM magic</div>
+          <div class="card">SELECT * FROM magic;</div>
           <div class="card">Natural Language → SQL</div>
+          <div class="card">"Show me all the entries in magic table."</div>
         </div>
       </div>
+      <div class="background-animation"></div>
     </section>
 
     <section id="about" class="info-section">
-      <h2>How It Works</h2>
+      <h2>Experience the Magic of Natural SQL</h2>
       <div class="features">
         <div class="feature">
-          <h3>Write Naturally</h3>
-          <p>Express your database queries in plain English</p>
+          <h3>Natural Language Input</h3>
+          <p>
+            Simply describe what you want to query in plain English. No SQL
+            knowledge required.
+          </p>
         </div>
         <div class="feature">
-          <h3>AI Translation</h3>
-          <p>Advanced AI converts your text to SQL</p>
+          <h3>Intelligent Translation</h3>
+          <p>
+            Our AI instantly converts your natural language into precise,
+            optimized SQL queries.
+          </p>
         </div>
         <div class="feature">
-          <h3>Execute & Results</h3>
-          <p>Get instant results from your database</p>
+          <h3>Real-time Results</h3>
+          <p>
+            Get immediate results with syntax highlighting and formatted output.
+          </p>
         </div>
       </div>
     </section>
@@ -58,7 +68,7 @@
             id="naturalQuery"
             placeholder="Enter your query in natural language..."
           ></textarea>
-          <button id="convertBtn">Convert to SQL</button>
+          <button id="convertBtn"><span>Convert to SQL</span></button>
         </div>
         <div class="output-area">
           <div class="sql-output">
@@ -72,10 +82,6 @@
         </div>
       </div>
     </section>
-
-    <footer>
-      <p>© 2024 SQLMagic - Natural Language to SQL Converter</p>
-    </footer>
 
     <!-- Client-side script -->
     <script type="module" src="script.js"></script>

@@ -1,8 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const naturalQuery = document.getElementById('naturalQuery');
     const convertBtn = document.getElementById('convertBtn');
     const sqlQuery = document.getElementById('sqlQuery');
     const queryResults = document.getElementById('queryResults');
+
+    // Fetch API key from server
+    let apiKey;
+    try {
+        const response = await fetch('/api/getApiKey');
+        const data = await response.json();
+        apiKey = data.apiKey;
+    } catch (error) {
+        console.error('Error fetching API key:', error);
+        return;
+    }
 
     // Smooth scroll for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -30,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
                 },
                 body: JSON.stringify({ text: naturalQuery.value })
             });
@@ -73,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
                 },
                 body: JSON.stringify({ query: sql })
             });
