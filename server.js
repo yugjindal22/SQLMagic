@@ -21,7 +21,7 @@ const db = mysql.createConnection({
 });
 
 // Gemini AI setup
-const apiKey = "AIzaSyCQp7m9jx4CMpvI3e7W2ojVLGOc9_9NatY";
+const apiKey = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
