@@ -172,7 +172,7 @@ nav {
 .card:hover {
     transform: scale(1.05) translateY(-5px);
     box-shadow: 0 15px 30px var(--card-shadow),
-                0 0 20px rgba(255, 255, 255, 0.2);
+        0 0 20px rgba(255, 255, 255, 0.2);
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
 }
 
@@ -201,10 +201,10 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 50%, 
-        rgba(0, 245, 255, 0.15),
-        rgba(255, 51, 102, 0.15),
-        transparent 60%);
+    background: radial-gradient(circle at 50% 50%,
+            rgba(0, 245, 255, 0.15),
+            rgba(255, 51, 102, 0.15),
+            transparent 60%);
     filter: blur(100px);
     opacity: 0.5;
     z-index: -1;
@@ -212,9 +212,12 @@ nav {
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.5;
     }
+
     50% {
         opacity: 1;
     }
@@ -322,6 +325,7 @@ button:hover {
         opacity: 0;
         transform: translateX(-50px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -329,9 +333,12 @@ button:hover {
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-20px);
     }
@@ -345,11 +352,12 @@ button:hover {
     margin-top: 2rem;
 }
 
-.sql-output, .results {
+.sql-output,
+.results {
     background: var(--background);
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -367,7 +375,7 @@ pre {
     border-collapse: collapse;
     margin-top: 1rem;
     background: var(--card-bg);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -398,7 +406,7 @@ pre {
     display: inline-block;
     width: 20px;
     height: 20px;
-    border: 3px solid rgba(255,255,255,.3);
+    border: 3px solid rgba(255, 255, 255, .3);
     border-radius: 50%;
     border-top-color: white;
     animation: spin 1s ease-in-out infinite;
@@ -406,7 +414,9 @@ pre {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Error Message */
@@ -446,7 +456,7 @@ pre {
     padding: 2.5rem;
     background: var(--card-bg);
     border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);

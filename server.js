@@ -3,12 +3,14 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const path = require('path');
+const cors = require('cors');  // Add this line
 require('dotenv').config();
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 // Middleware
+app.use(cors());  // Add this line before other middleware
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 

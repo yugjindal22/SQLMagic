@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Fetch API key from server
     let apiKey;
     try {
-        const response = await fetch('/api/getApiKey');
+        const response = await fetch('http://localhost:3001/api/getApiKey');
         const data = await response.json();
         apiKey = data.apiKey;
     } catch (error) {
@@ -31,13 +31,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             alert('Please enter a query');
             return;
         }
-    
+
         try {
             convertBtn.disabled = true;
             convertBtn.textContent = 'Converting...';
-    
+
             // Call to backend API for conversion
-            const response = await fetch('/api/convert', {
+            const response = await fetch('http://localhost:3001/api/convert', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,29 +45,29 @@ document.addEventListener('DOMContentLoaded', async () => {
                 },
                 body: JSON.stringify({ text: naturalQuery.value })
             });
-    
+
             const result = await response.json();
-            
+
             if (!result.success) {
                 throw new Error(result.error);
             }
-    
+
             // Clean up the SQL query to remove unwanted backticks and SQL markers
             let cleanSql = result.sql.replace(/sql|```/g, '').trim();
 
             // Display the cleaned-up SQL
             sqlQuery.textContent = cleanSql;
-            
+
             // Animate the result
             sqlQuery.style.opacity = '0';
             setTimeout(() => {
                 sqlQuery.style.opacity = '1';
                 sqlQuery.style.transition = 'opacity 0.5s ease-in';
             }, 100);
-    
+
             // Execute query
             executeQuery(cleanSql);
-    
+
         } catch (error) {
             console.error('Error:', error);
             sqlQuery.textContent = 'Error converting query';
@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function executeQuery(sql) {
         try {
             queryResults.innerHTML = '<div class="loading"></div>';
-            
-            const response = await fetch('/api/execute', {
+
+            const response = await fetch('http://localhost:3001/api/execute', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             const data = await response.json();
-            
+
             if (!data.success) {
                 throw new Error(data.error);
             }
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         } catch (error) {
             console.error('Error executing query:', error);
-            queryResults.innerHTML = 
+            queryResults.innerHTML =
                 `<div class="error-message">
                     ${error.message || 'Error executing query'}
                 </div>`;
