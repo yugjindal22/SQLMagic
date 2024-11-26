@@ -3,14 +3,14 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const path = require('path');
-const cors = require('cors');  // Add this line
+const cors = require('cors'); 
 require('dotenv').config();
 
 const app = express();
 const port = 3001;
 
 // Middleware
-app.use(cors());  // Add this line before other middleware
+app.use(cors()); 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -19,7 +19,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: process.env.DB_PASSWORD,
-    database: 'test' // Replace with your database name
+    database: 'test' 
 });
 
 // Gemini AI setup
@@ -28,9 +28,8 @@ const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 // Routes
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+
+
 
 app.get('/api/getApiKey', (req, res) => {
     res.json({ apiKey: process.env.GEMINI_API_KEY });

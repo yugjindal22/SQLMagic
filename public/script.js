@@ -96,13 +96,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 throw new Error(data.error);
             }
 
-            // Determine if query is DDL (e.g., CREATE, ALTER, DROP) or DML
-            const isDDL = /^(CREATE|ALTER|DROP|TRUNCATE)\b/i.test(sql);
-            if (isDDL) {
-                queryResults.innerHTML = '<div class="success-message">DDL command executed successfully.</div>';
-            } else {
-                displayResults(data.data);
-            }
+            displayResults(data.data);
+            
         } catch (error) {
             console.error('Error executing query:', error);
             queryResults.innerHTML =
